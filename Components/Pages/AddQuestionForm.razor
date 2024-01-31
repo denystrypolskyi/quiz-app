@@ -1,0 +1,96 @@
+﻿@page "/quizzes/addquestion/{quizId:int}"
+@using NewQuizApp.Data
+@using NewQuizApp.Models
+@inject QuizDbContext _context
+@inject NavigationManager NavigationManager
+
+<PageTitle>Add Question</PageTitle>
+
+<div class="container border border-3 border-light p-4 rounded-3 mb-3">
+    @if (errorMessage.Length != 0)
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
+    <h5>@selectedQuiz.Title</h5>
+    <div class="mb-3">
+        <img src="@selectedQuiz.ImageSource" alt="Current Image" class="rounded-3" style="width: 19rem;height: 28rem" />
+    </div>
+    <form @onsubmit="AddQuestion">
+        <div class="mb-3">
+            <label for="questionText" class="form-label">Question Text</label>
+            <input type="text" id="questionText" class="form-control" @bind="questionText" required />
+        </div>
+        <div class="mb-3">
+            <label for="option1" class="form-label">Option One</label>
+            <input type="text" id="option1" class="form-control" @bind="options[0]" required />
+        </div>
+        <div class="mb-3">
+            <label for="option2" class="form-label">Option Two</label>
+            <input type="text" id="option2" class="form-control" @bind="options[1]" required />
+        </div>
+        <div class="mb-3">
+            <label for="option3" class="form-label">Option Three</label>
+            <input type="text" id="option3" class="form-control" @bind="options[2]" required />
+        </div>
+        <div class="mb-3">
+            <label for="option4" class="form-label">Option Four</label>
+            <input type="text" id="option4" class="form-control" @bind="options[3]" required />
+        </div>
+        <div class="mb-3">
+            <label for="correctAnswer" class="form-label">Correct Answer</label>
+            <input type="number" id="correctAnswer" class="form-control" @bind="correctAnswer" required />
+        </div>
+        <div class="mb-3">
+            <label for="imageSource" class="form-label">Question Image (please provide valid image URL)</label>
+            <input type="text" id="imageSource" class="form-control" @bind="imageSource" />
+        </div>
+            <a href="quizzes" class="btn btn-light border border-1 border-secondary">Back</a>
+            <button type="submit" class="btn btn-primary ms-1">Add Question</button>
+    </form>
+</div>
+
+@code {
+    [Parameter]
+    public int quizId { get; set; }
+    private string questionText;
+    private string[] options = new string[4];
+    private int correctAnswer;
+    private string imageSource;
+    private Quiz selectedQuiz;
+    private string errorMessage = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        selectedQuiz = _context.Quizzes.Find(quizId);
+    }
+
+    private void AddQuestion()
+    {
+        if (correctAnswer < 1 || correctAnswer > 4)
+        {
+            errorMessage = "Correct Answer must be between 1 and 4.";
+            return;
+        }
+        else
+        {
+            errorMessage = string.Empty;
+        }
+        var newQuestion = new Question
+            {
+                Text = questionText,
+                AnswerOptions = options.ToList(),
+                CorrectAnswer = correctAnswer-1,
+                ImageSource = imageSource,
+                QuizId = quizId
+            };
+
+        _context.Questions.Add(newQuestion);
+        _context.SaveChanges();
+
+        NavigationManager.NavigateTo($"/quizzes");
+    }
+}

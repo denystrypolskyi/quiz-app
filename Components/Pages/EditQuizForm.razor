@@ -1,0 +1,78 @@
+﻿@page "/quizzes/edit/{quizId:int}"
+@using NewQuizApp.Data
+@using NewQuizApp.Models
+@inject QuizDbContext _context
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit @quiz.Title</PageTitle>
+
+<div class="container border border-3 border-light p-4 rounded-3 mb-3">
+    <div class="mb-3">
+        <img src="@quiz.ImageSource" alt="Current Image" class="rounded-3" style="height: 28rem; width: 19rem" />
+    </div>
+    <form onsubmit="@EditQuiz">
+        <div class="mb-3">
+            <label for="title" class="form-label">Quiz Title</label>
+            <input type="text" id="title" class="form-control" @bind="@quiz.Title" required />
+        </div>
+        <div class="mb-3">
+                <label for="imageSource" class="form-label">Quiz Image (please provide valid image URL)</label>
+            <input type="text" id="imageSource" class="form-control" @bind="@quiz.ImageSource" required />
+        </div>
+        @if(questions.Count > 0)
+        {
+            <p>Questions</p>
+            <div class="mb-3 border border-1 form-control p-3 rounded-3">
+                <ol>
+                @foreach (var question in questions)
+                {
+                    <li>
+                        <p class="d-inline">@question.Text</p>
+                        <a class="d-inline ms-2 text-decoration-none text-danger" style="cursor: pointer" @onclick="() => DeleteQuestion(question.Id)">Remove</a>
+                    </li>
+                }
+                </ol>
+            </div>
+        }
+        <button type="button" class="btn btn-light border border-1 border-secondary" @onclick="Back">Back</button>
+        <button type="submit" class="btn btn-primary ms-1">Save</button>
+    </form>
+</div>
+
+@code {
+    [Parameter]
+    public int quizId { get; set; }
+
+    private List<Question> questions;
+    private Quiz quiz;
+
+    protected override void OnInitialized()
+    {
+        questions = _context.Questions.Where(q => q.QuizId == quizId).ToList();
+        quiz = _context.Quizzes.FirstOrDefault(q => q.Id == quizId);
+    }
+
+    private void EditQuiz()
+    {
+        _context.SaveChanges();
+        NavigationManager.NavigateTo("/quizzes");
+    }
+
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/quizzes");
+    }
+
+    private void DeleteQuestion(int questionId)
+    {
+        var questionToDelete = _context.Questions.FirstOrDefault(q => q.Id == questionId);
+
+        if (questionToDelete != null)
+        {
+            _context.Questions.Remove(questionToDelete);
+            _context.SaveChanges();
+            questions = _context.Questions.Where(q => q.QuizId == quizId).ToList();
+            StateHasChanged();
+        }
+    }
+}

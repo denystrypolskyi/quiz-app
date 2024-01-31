@@ -1,0 +1,114 @@
+﻿@page "/quizzes/{quizId:int}"
+@using Microsoft.EntityFrameworkCore
+@using NewQuizApp.Data
+@using NewQuizApp.Models
+@inject QuizDbContext _context;
+
+<PageTitle>@selectedQuiz.Title</PageTitle>
+
+<div class="container text-center">
+    @if (errorMessage.Length > 0)
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
+    @if(questions.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            Oops! It looks like there are no questions for this quiz yet.
+        </div>
+    }
+    @if (selectedQuiz != null && currentQuestionIndex <= questions.Count() - 1)
+    {
+        <div class="w-50 rounded-3 mb-3 mx-auto d-flex justify-content-center align-items-center">
+            <h5 class="m-0">@questions[currentQuestionIndex].Text</h5>
+        </div>
+        <div class="mx-auto">
+            <img src="@questions[currentQuestionIndex].ImageSource" alt="Image Description" class="img-fluid mb-3 rounded-3" style="max-height: 400px;" />
+            <div class="rounded-3 p-3 mb-2" style="background-color: white; max-width: 300px; margin: 0 auto;">
+                @for (var i = 0; i < questions[currentQuestionIndex].AnswerOptions.Count; i++)
+                {
+                    var option = questions[currentQuestionIndex].AnswerOptions[i];
+                    var isLastOption = i == questions[currentQuestionIndex].AnswerOptions.Count - 1;
+
+                    <div class="@(isLastOption ? "" : "mb-3")">
+                        <input class="form-check-input visually-hidden" type="radio" name="answer" id="@option" value="@option" checked="@selectedOption == option" />
+                        <label class="form-check-label d-block p-3 border border-2 rounded-3 @GetBorderStyle(option)" onclick="@(() => HandleOnClick(option))" for="@option">
+                            @option
+                        </label>
+                    </div>
+                }
+            </div>
+            <button type="button" class="btn btn-primary mb-3" style="width: 268px; height: 50px" @onclick="SubmitAnswer">Submit</button>
+        </div>
+    }
+    @if(currentQuestionIndex == questions.Count() && questions.Count() > 0)
+    {
+        <div class="alert alert-success" role="alert">
+            Congratulations! You completed all questions!
+            <br />
+            Correct Answers: @correctAnswers
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public int quizId { get; set; }
+    private string selectedOption = string.Empty;
+    private int correctAnswers = 0;
+    private int currentQuestionIndex = 0;
+    private string errorMessage = string.Empty;
+    private List<Quiz> quizzes;
+    private List<Question> questions;
+    private Quiz selectedQuiz;
+
+    @inject NavigationManager NavigationManager
+
+    protected override void OnInitialized()
+    {
+        quizzes = _context.Quizzes.ToList();
+
+        if (int.TryParse(NavigationManager.Uri.Split('/').Last(), out int quizId))
+        {
+            selectedQuiz = quizzes.FirstOrDefault(q => q.Id == quizId);
+
+            if (selectedQuiz != null)
+            {
+                questions = _context.Questions.Where(q => q.QuizId == quizId).ToList();
+            }
+        }
+    }
+
+    private void HandleOnClick(string option)
+    {
+        Console.WriteLine(option);
+        selectedOption = option;
+        StateHasChanged();
+    }
+
+    private string GetBorderStyle(string option)
+    {
+        return selectedOption == option ? "border-primary" : "";
+    }
+
+    private void SubmitAnswer()
+    {
+        @if (string.IsNullOrEmpty(selectedOption))
+        {
+            errorMessage = "Please select an option before submitting.";
+            return;
+        }
+
+        errorMessage = string.Empty;
+
+        if (selectedOption == questions[currentQuestionIndex].AnswerOptions[questions[currentQuestionIndex].CorrectAnswer])
+        {
+            correctAnswers += 1;
+        }
+
+        currentQuestionIndex += 1;
+
+        selectedOption = string.Empty;
+    }
+}

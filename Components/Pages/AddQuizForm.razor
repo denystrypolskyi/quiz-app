@@ -1,0 +1,40 @@
+﻿@page "/addquiz"
+@using NewQuizApp.Data
+@using NewQuizApp.Models
+@inject QuizDbContext _context
+@inject NavigationManager NavigationManager
+
+<PageTitle>Add Quiz</PageTitle>
+
+<div class="container border border-3 border-light p-4 rounded-3">
+    <form @onsubmit="AddQuiz">
+        <div class="form-group mb-3">
+            <label for="quizTitle">Quiz Title:</label>
+            <input type="text" class="form-control" id="quizTitle" @bind="newQuiz.Title" required />
+        </div>
+        <div class="form-group mb-3">
+            <label for="imageSource">Quiz Image (please provide valid image URL):</label>
+            <input type="text" class="form-control" id="imageSource" @bind="newQuiz.ImageSource" required />
+        </div>
+        <button type="button" class="btn btn-light border border-1 border-secondary" @onclick="Back">Back</button>
+        <button type="submit" class="btn btn-primary ms-1">Add</button>
+    </form>
+
+</div>
+
+@code {
+    private Quiz newQuiz = new Quiz();
+
+    private void AddQuiz()
+    {
+        _context.Quizzes.Add(newQuiz);
+        _context.SaveChanges();
+
+        newQuiz = new Quiz();
+        NavigationManager.NavigateTo("/quizzes");
+    }
+    private void Back()
+    {
+        NavigationManager.NavigateTo("/quizzes");
+    }
+}

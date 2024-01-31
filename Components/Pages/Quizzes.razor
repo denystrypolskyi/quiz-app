@@ -1,0 +1,57 @@
+﻿@page "/quizzes"
+@using NewQuizApp.Data
+@using NewQuizApp.Models
+@inject QuizDbContext _context;
+@inject NavigationManager NavigationManager
+
+<PageTitle>Quizzes</PageTitle>
+
+<div class="container">
+    <div class="row">
+        @foreach (var quiz in quizzes)
+        {
+            <div class="col-md-3 mb-4 text-center">
+                <div class="card" style="width: 19rem; height: 38rem;">
+                    <img src="@quiz.ImageSource" class="card-img-top" style="height: 28rem" alt="Quiz Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@quiz.Title</h5>
+                        <a href="quizzes/@quiz.Id" style="width: 125px" class="btn btn-primary d-inline-block mt-2">Launch</a>
+                        <button class="btn btn-warning ms-1 mt-2" style="width: 125px" onclick="@(() => EditQuiz(quiz.Id))">Edit</button>
+                        <a href="/quizzes/addquestion/@quiz.Id" class="btn btn-success mt-2" style="width: 125px">Add Question</a>
+                        <button class="btn btn-danger mt-2 ms-1" style="width: 125px" onclick="@(() => DeleteQuiz(quiz.Id))">Delete</button>
+                    </div>
+                </div>
+            </div>
+        }
+        <a href="addquiz" class="ms-3 btn btn-light border border-1 border-success text-success" style="display: flex; align-items: center; justify-content: center; height: 100%; width:19rem; height: 38rem;">
+            <span>Add</span>
+        </a>
+    </div>
+</div>
+
+
+@code {
+    private List<Quiz> quizzes;
+
+    protected override void OnInitialized()
+    {
+        quizzes = _context.Quizzes.ToList();
+    }
+
+    private void DeleteQuiz(int quizId)
+    {
+        var quizToDelete = _context.Quizzes.Find(quizId);
+
+        if (quizToDelete != null)
+        {
+            _context.Quizzes.Remove(quizToDelete);
+            _context.SaveChanges();
+            quizzes = _context.Quizzes.ToList();
+            StateHasChanged();
+        }
+    }
+    private void EditQuiz(int quizId)
+    {
+        NavigationManager.NavigateTo($"/quizzes/edit/{quizId}");
+    }
+}
