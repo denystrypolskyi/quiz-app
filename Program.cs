@@ -10,7 +10,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<QuizDbContext>((provider, options) =>
 {
-    options.UseSqlServer("data source=DESKTOP-5VDEPLI\\SQLEXPRESS;initial catalog=DBTest;trusted_connection=true;Encrypt=True;TrustServerCertificate=True");
+    options.UseSqlServer("data source=DESKTOP-KNK93V5\\SQLEXPRESS;initial catalog=DBTest;trusted_connection=true;Encrypt=True;TrustServerCertificate=True");
 });
 
 var app = builder.Build();

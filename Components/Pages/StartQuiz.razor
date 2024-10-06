@@ -1,10 +1,10 @@
-﻿@page "/quizzes/{quizId:int}"
+﻿@page "/quiz/{quizId:int}"
 @using Microsoft.EntityFrameworkCore
 @using NewQuizApp.Data
 @using NewQuizApp.Models
 @inject QuizDbContext _context;
 
-<PageTitle>@selectedQuiz.Title</PageTitle>
+<PageTitle>[In Progress] @selectedQuiz.Title</PageTitle>
 
 <div class="container text-center">
     @if (errorMessage.Length > 0)

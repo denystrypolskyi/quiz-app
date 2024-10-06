@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\NewQuizApp.csproj": {}
+    "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\NewQuizApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\NewQuizApp.csproj": {
+    "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\NewQuizApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\NewQuizApp.csproj",
+        "projectUniqueName": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\NewQuizApp.csproj",
         "projectName": "NewQuizApp",
-        "projectPath": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\NewQuizApp.csproj",
-        "packagesPath": "C:\\Users\\dennis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\",
+        "projectPath": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\NewQuizApp.csproj",
+        "packagesPath": "C:\\Users\\denys\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dennis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\denys\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -80,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

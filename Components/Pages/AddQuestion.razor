@@ -1,10 +1,10 @@
-﻿@page "/quizzes/addquestion/{quizId:int}"
+﻿@page "/quiz/{quizId:int}/questions/add"
 @using NewQuizApp.Data
 @using NewQuizApp.Models
 @inject QuizDbContext _context
 @inject NavigationManager NavigationManager
 
-<PageTitle>Add Question</PageTitle>
+<PageTitle>Quizlify</PageTitle>
 
 <div class="container border border-3 border-light p-4 rounded-3 mb-3">
     @if (errorMessage.Length != 0)
@@ -17,7 +17,7 @@
     <div class="mb-3">
         <img src="@selectedQuiz.ImageSource" alt="Current Image" class="rounded-3" style="width: 19rem;height: 28rem" />
     </div>
-    <form @onsubmit="AddQuestion">
+    <form @onsubmit="HandleAddQuestion">
         <div class="mb-3">
             <label for="questionText" class="form-label">Question Text</label>
             <input type="text" id="questionText" class="form-control" @bind="questionText" required />
@@ -46,14 +46,13 @@
             <label for="imageSource" class="form-label">Question Image (please provide valid image URL)</label>
             <input type="text" id="imageSource" class="form-control" @bind="imageSource" />
         </div>
-            <a href="quizzes" class="btn btn-light border border-1 border-secondary">Back</a>
-            <button type="submit" class="btn btn-primary ms-1">Add Question</button>
+        <a href="/" class="btn btn-light border border-1 border-secondary">Back</a>
+        <button type="submit" class="btn btn-primary ms-1">Add Question</button>
     </form>
 </div>
 
 @code {
-    [Parameter]
-    public int quizId { get; set; }
+    [Parameter] public int quizId { get; set; }
     private string questionText;
     private string[] options = new string[4];
     private int correctAnswer;
@@ -64,11 +63,10 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-
         selectedQuiz = _context.Quizzes.Find(quizId);
     }
 
-    private void AddQuestion()
+    private void HandleAddQuestion() // Updated method name here
     {
         if (correctAnswer < 1 || correctAnswer > 4)
         {
@@ -80,17 +78,17 @@
             errorMessage = string.Empty;
         }
         var newQuestion = new Question
-            {
-                Text = questionText,
-                AnswerOptions = options.ToList(),
-                CorrectAnswer = correctAnswer-1,
-                ImageSource = imageSource,
-                QuizId = quizId
-            };
+        {
+            Text = questionText,
+            AnswerOptions = options.ToList(),
+            CorrectAnswer = correctAnswer - 1,
+            ImageSource = imageSource,
+            QuizId = quizId
+        };
 
         _context.Questions.Add(newQuestion);
         _context.SaveChanges();
 
-        NavigationManager.NavigateTo($"/quizzes");
+        NavigationManager.NavigateTo($"/quiz/{quizId}");
     }
 }

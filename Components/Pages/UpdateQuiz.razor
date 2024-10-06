@@ -1,16 +1,16 @@
-﻿@page "/quizzes/edit/{quizId:int}"
+﻿@page "/quiz/{quizId:int}/edit"
 @using NewQuizApp.Data
 @using NewQuizApp.Models
 @inject QuizDbContext _context
 @inject NavigationManager NavigationManager
 
-<PageTitle>Edit @quiz.Title</PageTitle>
+<PageTitle>[Editing] @quiz.Title</PageTitle>
 
 <div class="container border border-3 border-light p-4 rounded-3 mb-3">
     <div class="mb-3">
         <img src="@quiz.ImageSource" alt="Current Image" class="rounded-3" style="height: 28rem; width: 19rem" />
     </div>
-    <form onsubmit="@EditQuiz">
+    <form onsubmit="HandleUpdateQuiz">
         <div class="mb-3">
             <label for="title" class="form-label">Quiz Title</label>
             <input type="text" id="title" class="form-control" @bind="@quiz.Title" required />
@@ -52,15 +52,15 @@
         quiz = _context.Quizzes.FirstOrDefault(q => q.Id == quizId);
     }
 
-    private void EditQuiz()
+    private void HandleUpdateQuiz()
     {
         _context.SaveChanges();
-        NavigationManager.NavigateTo("/quizzes");
+        NavigationManager.NavigateTo("/");
     }
 
     private void Back()
     {
-        NavigationManager.NavigateTo("/quizzes");
+        NavigationManager.NavigateTo("/");
     }
 
     private void DeleteQuestion(int questionId)

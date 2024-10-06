@@ -13,7 +13,7 @@
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-            @"data source=DESKTOP-5VDEPLI\SQLEXPRESS;initial catalog=DBTest;trusted_connection=true;Encrypt=True;TrustServerCertificate=True"
+            @"data source=DESKTOP-KNK93V5\SQLEXPRESS;initial catalog=DBTest;trusted_connection=true;Encrypt=True;TrustServerCertificate=True"
             );
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

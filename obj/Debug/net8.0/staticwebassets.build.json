@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cFOVxVCDbOMf9v0H7SSx0TCKiKNkxplpXobznggiMsk=",
+  "Hash": "1KmyJkKBioizOIFPsraCHPxNgVo5UstN/GfdQ9VgUVg=",
   "Source": "NewQuizApp",
   "BasePath": "_content/NewQuizApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "NewQuizApp\\wwwroot",
       "Source": "NewQuizApp",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\",
       "BasePath": "_content/NewQuizApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\NewQuizApp.styles.css",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\bundle\\NewQuizApp.styles.css",
       "SourceId": "NewQuizApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "NewQuizApp.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\NewQuizApp.styles.css"
+      "OriginalItemSpec": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\bundle\\NewQuizApp.styles.css"
     },
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\NewQuizApp.bundle.scp.css",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\NewQuizApp.bundle.scp.css",
       "SourceId": "NewQuizApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "NewQuizApp.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\NewQuizApp.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\NewQuizApp.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\app.css",
       "SourceId": "NewQuizApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "NewQuizApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "NewQuizApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\favicon.png",
       "SourceId": "NewQuizApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dennis\\source\\repos\\NewQuizApp\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\denys\\Desktop\\учеба и тд\\Repos\\quiz-app\\wwwroot\\",
       "BasePath": "_content/NewQuizApp",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
